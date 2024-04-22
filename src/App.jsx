@@ -38,7 +38,7 @@ function App() {
               path={AppRoutes.EXIT}
               element={<ExitPage user={user} logOut={logOut} />}
             ></Route>
-            <Route path={AppRoutes.CARD} element={<ViewCard />}></Route>
+            <Route path={AppRoutes.CARD} user={user} element={<ViewCard />}></Route>
           </Route>
         </Route>
         <Route

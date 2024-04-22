@@ -12,21 +12,27 @@ import {
 } from "../styles/Login.styled";
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../lib/routes";
-import {formFields} from "../../lib/form";
-import { login } from "../../api";
+import { logining } from "../../api";
 
 export const Login = ({ userLogin }) => {
 
-  const [formData, setFormData] = useState([formFields]);
+  const [formData, setFormData] = useState([{}]);
 
-  const handleInputChange =  (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-
+    
     setFormData({
       ...formData,
       [name]: value,
     });
+
   };
+
+  const handleLogining = async()=>{
+    await logining(formData.login, formData.password).then((responseData)=>{
+      userLogin(responseData.user)
+    })
+  }
 
 
   return (
@@ -51,7 +57,7 @@ export const Login = ({ userLogin }) => {
               name="password"
               placeholder="Пароль"
             ></ModalInput>
-            <ModalBtn onClick={login(formData.email, formData.password)}>
+            <ModalBtn onClick={()=>handleLogining()}>
               <Link to={AppRoutes.HOME}>Войти</Link>
             </ModalBtn>
             <ModalGroup>

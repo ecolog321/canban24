@@ -1,9 +1,9 @@
 import { AppRoutes } from "../../../../lib/routes";
 import {Link} from "react-router-dom";
 
-export const PopExitForm = ({setIsAuth}) => {
+export const PopExitForm = ({logOut}) => {
 const toogleAuth=()=>{
-  setIsAuth(false)
+  logOut()
 }
 
   return (

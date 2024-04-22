@@ -1,11 +1,11 @@
 import { Wrapper } from "../components/styles/shared";
 import { Login } from "../components/Login/Login";
 
-function LoginPage({ setIsAuth }) {
+function LoginPage({userLogin}) {
   return (
     <>
       <Wrapper>
-        <Login setIsAuth={setIsAuth} />
+        <Login userLogin={userLogin} />
       </Wrapper>
     </>
   );

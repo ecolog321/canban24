@@ -15,10 +15,11 @@ function HomePage() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const userToken=JSON.parse(localStorage.getItem("user")).token
 
 
   useEffect(()=>{
-    getTasks().then((data)=>{
+    getTasks(userToken).then((data)=>{
       setTaskList(data.tasks);
       setIsLoading(false);
     })
@@ -26,7 +27,7 @@ function HomePage() {
       setError(err.message)
     })
     .finally(()=>{
-      setIsLoading(false )
+      setIsLoading(false)
     })
   },[])
 

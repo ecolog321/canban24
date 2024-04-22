@@ -11,11 +11,11 @@ import {
   TitleTheme,
 } from "./Card.styled";
 import { useState, useEffect } from "react";
-import { Link,useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Card = ({ id,theme, date, title }) => {
   const [taskTheme, setTaskTheme] = useState("Other");
-  let{cardID}=useParams();
+
 
   useEffect(() => {
     setTaskTheme(theme);
