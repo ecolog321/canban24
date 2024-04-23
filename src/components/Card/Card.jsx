@@ -13,12 +13,13 @@ import {
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export const Card = ({ id,theme, date, title }) => {
+export const Card = ({ _id,topic, title, date }) => {
   const [taskTheme, setTaskTheme] = useState("Other");
 
+  const colorTopic=topic[0];
 
   useEffect(() => {
-    setTaskTheme(theme);
+    setTaskTheme(colorTopic);
   }, []);
 
   return (
@@ -26,9 +27,9 @@ export const Card = ({ id,theme, date, title }) => {
       <CardsC>
         <CardGroup>
           <Theme $color={taskTheme}>
-            <TitleTheme $color={taskTheme}>{taskTheme}</TitleTheme>
+            <TitleTheme $color={taskTheme}>{topic}</TitleTheme>
           </Theme>
-          <Link to={`/card/${id}`}>
+          <Link to={`/card/${_id}`}>
             <CardBtn>
               <div></div>
               <div></div>

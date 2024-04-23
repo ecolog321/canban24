@@ -10,12 +10,8 @@ import {
   PopBrowseContainer,
   PopBrowseContent,
 } from "./PopupBrowse.styled";
-import {useParams} from 'react-router-dom';
 
-export const PopupBrowse = ({ $display }) => {
-
-    let {cardID}=useParams();
-
+export const PopupBrowse = ({ cardID, $display }) => {
   return (
     <PopBrowse $display={$display}>
       <PopBrowseContainer>

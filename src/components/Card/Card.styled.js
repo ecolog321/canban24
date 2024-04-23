@@ -5,7 +5,7 @@ export const Theme = styled.div`
   width: auto;
   padding: 5px 14px;
   border-radius: 18px;
-  background-color: ${({ $color }) => topicStyles[$color]?.backgroundColor || "#b4fdd1"};
+  background-color: ${({ $color }) => topicStyles[$color]?.backgroundColor || "e9d4fa"};
 `;
 
 export const TitleTheme = styled.p`

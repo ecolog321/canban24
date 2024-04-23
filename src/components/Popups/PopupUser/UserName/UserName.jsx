@@ -1,6 +1,6 @@
 function UserName() {
     return (
-		<p className="pop-user-set__name">Ivan Ivanov</p> 
+		<p className="pop-user-set__name">{JSON.parse(localStorage.getItem("user")).name}</p> 
     )
 }
 

@@ -13,10 +13,11 @@ import {
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../lib/routes";
 import { registration } from "../../api";
+import { formFields } from "../../lib/form";
 
 export const Signin = ({userLogin}) => {
 
-  const [formData, setFormData] = useState([{}]);
+  const [formData, setFormData] = useState(formFields);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +29,8 @@ export const Signin = ({userLogin}) => {
 
   };
 
-  const handleSingining = async()=>{
+  const handleSingining = async(e)=>{
+    e.preventDefault();
     await registration(formData.name,formData.login, formData.password).then((responseData)=>{
       userLogin(responseData.user)
     })
@@ -41,7 +43,7 @@ export const Signin = ({userLogin}) => {
             <ModalTtl>
               <h2>Регистрация</h2>
             </ModalTtl>
-            <FormLogIn action="#">
+            <FormLogIn onSubmit={handleSingining} action="#">
               <ModalInput
               onChange={handleInputChange}
                 type="text"
@@ -60,8 +62,8 @@ export const Signin = ({userLogin}) => {
                 name="password"
                 placeholder="Пароль"
               ></ModalInput>
-              <ModalBtn onClick={()=>handleSingining()}>
-                <Link to={AppRoutes.HOME}>Зарегестрироваться</Link>
+              <ModalBtn type="submit">
+                Зарегистрироваться
               </ModalBtn>
               <ModalGroup>
                 <p>Уже есть аккаунт?</p>
