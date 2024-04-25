@@ -12,14 +12,13 @@ import {
 } from "../styles/Login.styled";
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../lib/routes";
-import {formFields} from "../../lib/form";
-import { login } from "../../api";
+import { logining } from "../../api";
+import { formFields } from "../../lib/form";
 
 export const Login = ({ userLogin }) => {
+  const [formData, setFormData] = useState(formFields);
 
-  const [formData, setFormData] = useState([formFields]);
-
-  const handleInputChange =  (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
 
     setFormData({
@@ -28,6 +27,12 @@ export const Login = ({ userLogin }) => {
     });
   };
 
+  const handleLogining = async (e) => {
+    e.preventDefault();
+    await logining(formData.login, formData.password).then((responseData) => {
+      userLogin(responseData.user);
+    });
+  };
 
   return (
     <ContainerSingIn>
@@ -36,24 +41,20 @@ export const Login = ({ userLogin }) => {
           <ModalTtl>
             <h2>Вход</h2>
           </ModalTtl>
-          <FormLogIn action="#">
+          <FormLogIn onSubmit={handleLogining} action="#">
             <ModalInput
-              value={formData.email}
               onChange={handleInputChange}
               type="text"
               name="login"
               placeholder="Эл.почта"
             ></ModalInput>
             <ModalInput
-              value={formData.password}
               onChange={handleInputChange}
               type="password"
               name="password"
               placeholder="Пароль"
             ></ModalInput>
-            <ModalBtn onClick={login(formData.email, formData.password)}>
-              <Link to={AppRoutes.HOME}>Войти</Link>
-            </ModalBtn>
+            <ModalBtn type="submit">Войти</ModalBtn>
             <ModalGroup>
               <p>Нужна зарегестрироваться</p>
               <Link to={AppRoutes.SIGNIN}>Регистрация здесь</Link>

@@ -1,6 +1,6 @@
 function UserEmail() {
     return (
-        <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
+        <p className="pop-user-set__mail">{JSON.parse(localStorage.getItem("user")).login}</p>
     )
 }
 

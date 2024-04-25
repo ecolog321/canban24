@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Modal,
   ContainerSingIn,
@@ -12,12 +12,30 @@ import {
 
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../lib/routes";
+import { registration } from "../../api";
+import { formFields } from "../../lib/form";
 
-export const Signin = ({setIsAuth}) => {
+export const Signin = ({userLogin}) => {
 
-  const toogleAuth=()=>{
-    setIsAuth(true)
+  const [formData, setFormData] = useState(formFields);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+  };
+
+  const handleSingining = async(e)=>{
+    e.preventDefault();
+    await registration(formData.name,formData.login, formData.password).then((responseData)=>{
+      userLogin(responseData.user)
+    })
   }
+
     return (
       <ContainerSingIn>
         <Modal>
@@ -25,24 +43,27 @@ export const Signin = ({setIsAuth}) => {
             <ModalTtl>
               <h2>Регистрация</h2>
             </ModalTtl>
-            <FormLogIn action="#">
+            <FormLogIn onSubmit={handleSingining} action="#">
               <ModalInput
+              onChange={handleInputChange}
                 type="text"
-                name="first-name"
+                name="name"
                 placeholder="Имя"
               ></ModalInput>
               <ModalInput
+                onChange={handleInputChange}
                 type="text"
                 name="login"
                 placeholder="Эл.почта"
               ></ModalInput>
               <ModalInput
+                onChange={handleInputChange}
                 type="password"
                 name="password"
                 placeholder="Пароль"
               ></ModalInput>
-              <ModalBtn onClick={toogleAuth}>
-                <Link to={AppRoutes.HOME}>Зарегестрироваться</Link>
+              <ModalBtn type="submit">
+                Зарегистрироваться
               </ModalBtn>
               <ModalGroup>
                 <p>Уже есть аккаунт?</p>

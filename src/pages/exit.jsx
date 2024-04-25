@@ -3,12 +3,12 @@ import Header from "../components/Header/Header";
 import { Wrapper } from "../components/styles/shared";
 import { PopupExit } from "../components/Popups/PopupExit/PopupExit";
 
-function ExitPage({ setIsAuth }) {
+function ExitPage({ logOut }) {
   return (
     <>
       <Wrapper>
         <Header></Header>
-        <PopupExit setIsAuth={setIsAuth} $display />
+        <PopupExit logOut={logOut} $display />
       </Wrapper>
     </>
   );

@@ -12,25 +12,24 @@ import ExitPage from "./pages/exit";
 import { GlobalStyle } from "./components/styles/Global.styled";
 
 function App() {
-  
-  
-  const [user, setUser]=useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const navigate = useNavigate();
 
-  function userLogin(newUser){
-    localStorage.setItem("user", JSON.stringify(newUser))
-    setUser(newUser)
-    Navigate(AppRoutes.HOME)
+  function userLogin(newUser) {
+    localStorage.setItem("user", JSON.stringify(newUser));
+    setUser(newUser);
+    navigate(AppRoutes.HOME);
   }
 
-  function logOut(){
-    localStorage.removeItem("user")
-    setUser(null)
-    Navigate(AppRoutes.LOGIN)
+  function logOut() {
+    localStorage.removeItem("user");
+    setUser(null);
+    navigate(AppRoutes.LOGIN);
   }
 
   return (
     <>
-    <GlobalStyle/>
+      <GlobalStyle />
       <Routes>
         <Route element={<PrivateRoute user={user} />}>
           <Route path={AppRoutes.HOME} element={<HomePage user={user} />}>
@@ -38,7 +37,11 @@ function App() {
               path={AppRoutes.EXIT}
               element={<ExitPage user={user} logOut={logOut} />}
             ></Route>
-            <Route path={AppRoutes.CARD} element={<ViewCard />}></Route>
+            <Route
+              path={AppRoutes.CARD}
+              user={user}
+              element={<ViewCard />}
+            ></Route>
           </Route>
         </Route>
         <Route

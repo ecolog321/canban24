@@ -3,7 +3,7 @@ import { GlobalStyle } from "../styles/Global.styled";
 import { Container } from "../styles/shared";
 import { MainContent, MainB, MainBlock } from "./Main.styled";
 
-export const Main = ({ cards, isLoading, error }) => {
+export const Main = ({ tasks, isLoading, error }) => {
   const statusList = [
     "Без статуса",
     "Нужно сделать",
@@ -11,6 +11,8 @@ export const Main = ({ cards, isLoading, error }) => {
     "Тестирование",
     "Готово",
   ];
+
+  console.log(tasks)
 
   return (
     <>
@@ -27,7 +29,7 @@ export const Main = ({ cards, isLoading, error }) => {
                     <Column
                       key={index}
                       title={status}
-                      taskList={cards.filter((card) => card.status === status)}
+                      taskList={tasks.filter((task) => task.status === status)}
                     />
                   ))}
                 </>
