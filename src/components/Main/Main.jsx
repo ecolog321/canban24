@@ -8,7 +8,7 @@ import { useTasks } from "../../context/hooks/useTasks";
 
 export const Main = () => {
   const { user } = useUserContext();
-  const { tasks } = useTasks();
+  const { tasks, isLoading } = useTasks();
   const statusList = [
     "Без статуса",
     "Нужно сделать",
@@ -18,7 +18,6 @@ export const Main = () => {
   ];
 
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
 
   return (

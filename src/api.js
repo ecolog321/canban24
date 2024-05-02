@@ -52,11 +52,18 @@ export async function registration(name, login, password) {
   return data;
 }
 
-export async function getTodos() {
-  const response = await fetch("https://wedev-api.sky.pro/api/v2/todos", {
+export async function postTask({ title, topic, description, date, token }) {
+  const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
+    method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify({
+      title,
+      topic,
+      description,
+      date,
+    }),
   });
 
   if (!response.ok) {
