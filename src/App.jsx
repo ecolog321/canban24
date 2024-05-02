@@ -2,7 +2,7 @@ import "./App.css";
 import { PrivateRoute } from "./components/PrivateRoute";
 import LoginPage from "./pages/loginpage";
 import HomePage from "./pages/homepage";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { AppRoutes } from "./lib/routes";
 import SignInPage from "./pages/registation";
 import NotFoundPage from "./pages/notFoundpage";

@@ -1,9 +1,10 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AppRoutes } from "../../lib/routes";
 
 function checkLocal() {
   try {
-    const user = JSON.parse(localStorage.getItm("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
     return user;
   } catch (error) {
     localStorage.removeItem("user");
@@ -13,7 +14,7 @@ function checkLocal() {
 
 export const UserContext = createContext(null);
 
-export const UserProvider = () => {
+export const UserProvider = ({children}) => {
   const [user, setUser] = useState(checkLocal());
   const navigate = useNavigate();
 
@@ -30,6 +31,8 @@ export const UserProvider = () => {
   }
 
   return (
-    <UserContext.Provider value={{user, userLogin, logOut}}/>
+    <UserContext.Provider value={{user, userLogin, logOut}}>
+      {children}
+    </UserContext.Provider>
   )
 };

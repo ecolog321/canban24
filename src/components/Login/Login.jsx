@@ -32,6 +32,7 @@ export const Login = () => {
   const handleLogining = async (e) => {
     e.preventDefault();
     await logining(formData.login, formData.password).then((responseData) => {
+      console.log(responseData.user)
       userLogin(responseData.user);
     });
   };
