@@ -17,8 +17,9 @@ import { formFields } from "../../lib/form";
 import { useUserContext } from "../../context/hooks/useUser";
 
 export const Login = () => {
-  const{userLogin}=useUserContext();
+  const { userLogin } = useUserContext();
   const [formData, setFormData] = useState(formFields);
+  const [error, setError] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,40 +32,44 @@ export const Login = () => {
 
   const handleLogining = async (e) => {
     e.preventDefault();
-    await logining(formData.login, formData.password).then((responseData) => {
-      console.log(responseData.user)
-      userLogin(responseData.user);
-    });
+    try {
+      await logining(formData.login, formData.password).then((responseData) => {
+        console.log(responseData.user);
+        userLogin(responseData.user);
+      });
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+    return (
+      <ContainerSingIn>
+        <Modal>
+          <ModalB>
+            <ModalTtl>
+              <h2>Вход</h2>
+            </ModalTtl>
+            <FormLogIn onSubmit={handleLogining} action="#">
+              <ModalInput
+                onChange={handleInputChange}
+                type="text"
+                name="login"
+                placeholder="Эл.почта"
+              ></ModalInput>
+              <ModalInput
+                onChange={handleInputChange}
+                type="password"
+                name="password"
+                placeholder="Пароль"
+              ></ModalInput>
+              {error ? <h4 style={{ color: "red" }}>{error}</h4> : <></>}
+              <ModalBtn type="submit">Войти</ModalBtn>
+              <ModalGroup>
+                <p>Нужна зарегестрироваться</p>
+                <Link to={AppRoutes.SIGNIN}>Регистрация здесь</Link>
+              </ModalGroup>
+            </FormLogIn>
+          </ModalB>
+        </Modal>
+      </ContainerSingIn>
+    );
   };
-
-  return (
-    <ContainerSingIn>
-      <Modal>
-        <ModalB>
-          <ModalTtl>
-            <h2>Вход</h2>
-          </ModalTtl>
-          <FormLogIn onSubmit={handleLogining} action="#">
-            <ModalInput
-              onChange={handleInputChange}
-              type="text"
-              name="login"
-              placeholder="Эл.почта"
-            ></ModalInput>
-            <ModalInput
-              onChange={handleInputChange}
-              type="password"
-              name="password"
-              placeholder="Пароль"
-            ></ModalInput>
-            <ModalBtn type="submit">Войти</ModalBtn>
-            <ModalGroup>
-              <p>Нужна зарегестрироваться</p>
-              <Link to={AppRoutes.SIGNIN}>Регистрация здесь</Link>
-            </ModalGroup>
-          </FormLogIn>
-        </ModalB>
-      </Modal>
-    </ContainerSingIn>
-  );
-};

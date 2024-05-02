@@ -2,8 +2,13 @@ import { Column } from "../Column/Column";
 import { GlobalStyle } from "../styles/Global.styled";
 import { Container } from "../styles/shared";
 import { MainContent, MainB, MainBlock } from "./Main.styled";
+import { useState, useEffect } from "react";
+import { useUserContext } from "../../context/hooks/useUser";
+import { useTasks } from "../../context/hooks/useTasks";
 
-export const Main = ({ tasks, isLoading, error }) => {
+export const Main = () => {
+  const { user } = useUserContext();
+  const { tasks } = useTasks();
   const statusList = [
     "Без статуса",
     "Нужно сделать",
@@ -11,6 +16,10 @@ export const Main = ({ tasks, isLoading, error }) => {
     "Тестирование",
     "Готово",
   ];
+
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   return (
     <>

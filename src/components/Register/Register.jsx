@@ -20,6 +20,7 @@ export const Register = () => {
   const { userLogin } = useUserContext();
 
   const [formData, setFormData] = useState(formFields);
+  const [error, setError]   = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,11 +33,15 @@ export const Register = () => {
 
   const handleSingining = async (e) => {
     e.preventDefault();
-    await registration(formData.name, formData.login, formData.password).then(
-      (responseData) => {
-        userLogin(responseData.user);
-      }
-    );
+    try {
+      await registration(formData.name, formData.login, formData.password).then(
+        (responseData) => {
+          userLogin(responseData.user);
+        }
+      );
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -65,6 +70,7 @@ export const Register = () => {
               name="password"
               placeholder="Пароль"
             ></ModalInput>
+            {error ? <h4 style={{ color: "red" }}>{error}</h4> : <></>}
             <ModalBtn type="submit">Зарегистрироваться</ModalBtn>
             <ModalGroup>
               <p>Уже есть аккаунт?</p>
