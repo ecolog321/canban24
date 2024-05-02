@@ -12,8 +12,6 @@ export const Main = ({ tasks, isLoading, error }) => {
     "Готово",
   ];
 
-  console.log(tasks)
-
   return (
     <>
       <GlobalStyle />

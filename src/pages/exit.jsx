@@ -3,12 +3,12 @@ import Header from "../components/Header/Header";
 import { Wrapper } from "../components/styles/shared";
 import { PopupExit } from "../components/Popups/PopupExit/PopupExit";
 
-function ExitPage({ logOut }) {
+function ExitPage() {
   return (
     <>
       <Wrapper>
         <Header></Header>
-        <PopupExit logOut={logOut} $display />
+        <PopupExit $display />
       </Wrapper>
     </>
   );

@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 import { HeaderBtn } from "./HeaderButtonNew.styled";
+import { AppRoutes } from "../../../../lib/routes";
 
 function HeaderButtonNew() {
   return (
     <HeaderBtn>
-      <a href="#popNewCard">Создать новую задачу</a>
+      <Link to={AppRoutes.ADDCARD}>Создать новую задачу</Link>
     </HeaderBtn>
   );
 }

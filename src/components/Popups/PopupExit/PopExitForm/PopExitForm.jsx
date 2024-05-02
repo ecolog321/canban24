@@ -1,7 +1,9 @@
+import { useUserContext } from "../../../../context/hooks/useUser";
 import { AppRoutes } from "../../../../lib/routes";
 import {Link} from "react-router-dom";
 
-export const PopExitForm = ({logOut}) => {
+export const PopExitForm = () => {
+  const {logOut}=useUserContext()
 const toogleAuth=()=>{
   logOut()
 }

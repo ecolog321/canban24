@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ContainerSingIn,
@@ -10,14 +9,16 @@ import {
   ModalInput,
   ModalTtl,
 } from "../styles/Login.styled";
+
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../lib/routes";
-import { logining } from "../../api";
+import { registration } from "../../api";
 import { formFields } from "../../lib/form";
 import { useUserContext } from "../../context/hooks/useUser";
 
-export const Login = () => {
-  const{userLogin}=useUserContext();
+export const Register = () => {
+  const { userLogin } = useUserContext();
+
   const [formData, setFormData] = useState(formFields);
 
   const handleInputChange = (e) => {
@@ -29,11 +30,13 @@ export const Login = () => {
     });
   };
 
-  const handleLogining = async (e) => {
+  const handleSingining = async (e) => {
     e.preventDefault();
-    await logining(formData.login, formData.password).then((responseData) => {
-      userLogin(responseData.user);
-    });
+    await registration(formData.name, formData.login, formData.password).then(
+      (responseData) => {
+        userLogin(responseData.user);
+      }
+    );
   };
 
   return (
@@ -41,9 +44,15 @@ export const Login = () => {
       <Modal>
         <ModalB>
           <ModalTtl>
-            <h2>Вход</h2>
+            <h2>Регистрация</h2>
           </ModalTtl>
-          <FormLogIn onSubmit={handleLogining} action="#">
+          <FormLogIn onSubmit={handleSingining} action="#">
+            <ModalInput
+              onChange={handleInputChange}
+              type="text"
+              name="name"
+              placeholder="Имя"
+            ></ModalInput>
             <ModalInput
               onChange={handleInputChange}
               type="text"
@@ -56,10 +65,10 @@ export const Login = () => {
               name="password"
               placeholder="Пароль"
             ></ModalInput>
-            <ModalBtn type="submit">Войти</ModalBtn>
+            <ModalBtn type="submit">Зарегистрироваться</ModalBtn>
             <ModalGroup>
-              <p>Нужна зарегестрироваться</p>
-              <Link to={AppRoutes.SIGNIN}>Регистрация здесь</Link>
+              <p>Уже есть аккаунт?</p>
+              <Link to={AppRoutes.LOGIN}>Войти здесь</Link>
             </ModalGroup>
           </FormLogIn>
         </ModalB>

@@ -4,5 +4,6 @@ export const AppRoutes= {
     SIGNIN:"/signin",
     EXIT:"/exit",
     CARD:"/card/:cardID",
+    ADDCARD:"/add-card",
     NOTFOUND:"*",
 }

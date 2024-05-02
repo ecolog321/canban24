@@ -1,8 +1,9 @@
-import { PopNewCardCalendar } from "./PopNewCardCalenar/PopNewCardCalendar";
+import Calendar from "../../Calendar/Calendar";
+import { PopNew,PopNewBlock, PopNewContainer, PopNewContent } from "./PopNewCard.styled";
 import { PopNewCardCategories } from "./PopNewCardCategories/PopNewCardCategories";
 import { PopNewCardForm } from "./PopNewCardForm/PopNewCardForm";
 
-export function PopNewCard({tasks,setTaskList}) {
+export function PopNewCard({tasks,setTaskList, $display}) {
 
     function onClick() {
         const newTask = {
@@ -17,23 +18,23 @@ export function PopNewCard({tasks,setTaskList}) {
       }
 
     return (
-        <div className="pop-new-card" id="popNewCard">
-        <div className="pop-new-card__container">
-            <div className="pop-new-card__block">
-                <div className="pop-new-card__content">
-                    <h3 className="pop-new-card__ttl">Создание задачи</h3>
-                    <a href="#" className="pop-new-card__close">&#10006;</a>
-                    <div className="pop-new-card__wrap">
+        <PopNew $display={$display}>
+            <PopNewContainer>
+                <PopNewBlock>
+                    <PopNewContent>
+                        <h3>Создание задачи</h3>
+                        <a href=""></a>
+                        <div>
                         <PopNewCardForm/>
-                        <PopNewCardCalendar/>
+                        <Calendar/>
                         <PopNewCardCategories/>
-                    </div>
-                   
-                    <button onClick={onClick} className="form-new__create _hover01" id="btnCreate">Создать задачу</button>
-                </div>
-            </div>
-        </div>
-    </div>
+                        </div>
+                        <button onClick={onClick} className="form-new__create _hover01" id="btnCreate">Создать задачу</button>
+                    </PopNewContent>
+                </PopNewBlock>
+            </PopNewContainer>
+        </PopNew>
+
     )
     
 }
