@@ -1,15 +1,8 @@
 import { styled } from "styled-components";
+import { Hover01 } from "../../styles/shared";
 
 export const PopNew = styled.div`
   display: ${(props) => (props.$display ? "block" : "none")};
-  width: 100%;
-  min-width: 375px;
-  height: 100%;
-  min-height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 6;
   width: 100%;
   height: 100%;
   min-width: 375px;
@@ -30,13 +23,11 @@ export const PopNew = styled.div`
   & a:hover {
     color: #000000;
   }
-  & div {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-direction: column;
-  }
 `;
+
+export const PopNewWrap=styled.div`
+display: block;
+`
 
 export const PopNewContainer = styled.div`
   width: 100%;
@@ -56,7 +47,7 @@ export const PopNewBlock = styled.div`
   background-color: #ffffff;
   max-width: 630px;
   width: 100%;
-  padding: 40px 30px 48px;
+  padding: 40px 30px 38px;
   border-radius: 10px;
   border: 0.7px solid #d4dbe5;
   position: relative;
@@ -66,3 +57,19 @@ export const PopNewContent = styled.div`
   display: block;
   text-align: left;
 `;
+
+export const PopNewButton=styled.button`
+  width: 132px;
+  height: 30px;
+  background-color: #565eef;
+  border-radius: 4px;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #ffffff;
+  float: right;
+
+  ${Hover01}
+`

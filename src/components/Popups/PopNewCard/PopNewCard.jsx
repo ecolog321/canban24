@@ -1,22 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import { postTask } from "../../../api";
-import { useUserContext } from "../../../context/hooks/useUser";
 import Calendar from "../../Calendar/Calendar";
 import {
   PopNew,
   PopNewBlock,
+  PopNewButton,
   PopNewContainer,
   PopNewContent,
+  PopNewWrap,
 } from "./PopNewCard.styled";
 import { PopNewCardCategories } from "./PopNewCardCategories/PopNewCardCategories";
 import { PopNewCardForm } from "./PopNewCardForm/PopNewCardForm";
 import { useState } from "react";
 import { AppRoutes } from "../../../lib/routes";
+import { useUserContext } from "../../../context/hooks/useUser";
+import { useTasks } from "../../../context/hooks/useTasks";
 
 export function PopNewCard({ $display }) {
+  const { tasks, setTaskList } = useTasks();
   const { user } = useUserContext();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [selected, setSelected] = useState();
+  const [error, setError] = useState();
   const [newTask, setNewTask] = useState({
     title: "",
     description: "",
@@ -26,12 +31,14 @@ export function PopNewCard({ $display }) {
   async function handleSubmit(event) {
     event.preventDefault();
     const taskData = { ...newTask, date: selected };
-    postTask({...taskData, token: user?.token })
-      .then(
-        (responseData) => navigate(AppRoutes.HOME)
-        /* {setTaskList(responseData.tasks)} */
-      )
-      .catch((err) => console.log(err.message)); //вывести ошибку
+try {
+  postTask({ ...taskData, token: user?.token })
+      .then((responseData) => setTaskList(responseData.tasks))
+      .then(navigate(-1))
+} catch (err) {
+  setError(err.message)
+}
+//вывести ошибку
   }
 
   return (
@@ -40,19 +47,14 @@ export function PopNewCard({ $display }) {
         <PopNewBlock>
           <PopNewContent>
             <h3>Создание задачи</h3>
+            {error ? <h2 style={{ color: "red" }}>{error}</h2> : <></>}
             <a href=""></a>
-            <div>
-              <PopNewCardForm newTask={newTask} setNewTask={setNewTask}/>
+            <PopNewWrap>
+              <PopNewCardForm newTask={newTask} setNewTask={setNewTask} />
               <Calendar selected={selected} setSelected={setSelected} />
               <PopNewCardCategories newTask={newTask} setNewTask={setNewTask} />
-            </div>
-            <button
-              onClick={handleSubmit}
-              className="form-new__create _hover01"
-              id="btnCreate"
-            >
-              Создать задачу
-            </button>
+            </PopNewWrap>
+            <PopNewButton onClick={handleSubmit}>Создать задачу</PopNewButton>
           </PopNewContent>
         </PopNewBlock>
       </PopNewContainer>

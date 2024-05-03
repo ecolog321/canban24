@@ -16,7 +16,7 @@ export const Hover03 = css`
   }
 `;
 
-export const Btn=styled.button`
+export const Btn = styled.button`
   width: 178px;
   height: 40px;
   border-radius: 4px;
@@ -27,17 +27,17 @@ export const Btn=styled.button`
   line-height: 1;
   font-weight: 500;
   margin-right: 20px;
-  text-align:center;
-  padding-top:5px;
+  text-align: center;
+  padding-top: 5px;
 
   & a {
     color: #ffffff;
   }
 
   ${Hover01}
-`
+`;
 
-export const Subtitle=css`
+export const Subtitle = styled.label`
   color: #000;
   font-size: 14px;
   font-weight: 600;
@@ -59,6 +59,38 @@ export const Wrapper = styled.div`
   background-color: #f1f1f1;
 `;
 
-export const OtherMounth = css`
-  opacity: 0;
+export const Categories = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  & p {
+    margin-bottom: 14px;
+  }
+`;
+
+export const CategoriesThemes = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+`;
+
+export const CategoriesTheme = styled.div`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+
+  & p {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    white-space: nowrap;
+  }
 `;

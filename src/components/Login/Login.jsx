@@ -34,7 +34,6 @@ export const Login = () => {
     e.preventDefault();
     try {
       await logining(formData.login, formData.password).then((responseData) => {
-        console.log(responseData.user);
         userLogin(responseData.user);
       });
     } catch (err) {

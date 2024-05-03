@@ -1,7 +1,7 @@
-import {styled} from 'styled-components';
+import { styled } from "styled-components";
 
-export const PopBrowse=styled.div`
- display: ${props=>props.$display ? 'block':'none'};
+export const PopBrowse = styled.div`
+  display: ${(props) => (props.$display ? "block" : "none")};
   width: 100%;
   height: 100%;
   min-width: 375px;
@@ -12,7 +12,7 @@ export const PopBrowse=styled.div`
   z-index: 7;
 `;
 
-export const PopBrowseContainer=styled.div`
+export const PopBrowseContainer = styled.div`
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -24,8 +24,8 @@ export const PopBrowseContainer=styled.div`
   background: rgba(0, 0, 0, 0.4);
 `;
 
-export const PopBrowseBlock=styled.div`
- display: block;
+export const PopBrowseBlock = styled.div`
+  display: block;
   margin: 0 auto;
   background-color: #ffffff;
   max-width: 630px;
@@ -36,8 +36,7 @@ export const PopBrowseBlock=styled.div`
   position: relative;
 `;
 
-export const PopBrowseContent=styled.div`
-display: block;
+export const PopBrowseContent = styled.div`
+  display: block;
   text-align: left;
-
-`
+`;

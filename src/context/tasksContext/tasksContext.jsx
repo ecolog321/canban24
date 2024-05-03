@@ -23,7 +23,7 @@ export const TasksProvider = ({ children }) => {
   }, []);
 
   return (
-    <TasksContext.Provider value={{ tasks, isLoading }}>
+    <TasksContext.Provider value={{ tasks, isLoading, setTaskList }}>
       {children}
     </TasksContext.Provider>
   );
