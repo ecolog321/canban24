@@ -17,7 +17,7 @@ export const PopNewCardCategories = ({ newTask, setNewTask }) => {
                 setNewTask({ ...newTask, topic: e.target.value });
               }}
               type="radio"
-              name=""
+              name="categories"
               value="Web Design"
             />
           </label>
@@ -31,7 +31,7 @@ export const PopNewCardCategories = ({ newTask, setNewTask }) => {
                 setNewTask({ ...newTask, topic: e.target.value });
               }}
               type="radio"
-              name=""
+              name="categories"
               value="Copywriting"
             />
           </label>
@@ -46,7 +46,7 @@ export const PopNewCardCategories = ({ newTask, setNewTask }) => {
                 setNewTask({ ...newTask, topic: e.target.value });
               }}
               type="radio"
-              name=""
+              name="categories"
               value="Research"
             />
           </label>

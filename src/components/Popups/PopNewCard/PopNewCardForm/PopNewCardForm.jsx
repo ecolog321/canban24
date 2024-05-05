@@ -1,8 +1,11 @@
+
 import { Subtitle } from "../../../styles/shared";
 import { PopNewCardArea, PopNewCardBlock, PopNewCardInput, PopNewForm } from "./PopNewCardForm.styled";
 
 
 export const PopNewCardForm = ({ newTask, setNewTask }) => {
+
+
   return (
     <PopNewForm>
       <PopNewCardBlock>

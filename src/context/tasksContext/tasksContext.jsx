@@ -6,6 +6,7 @@ export const TasksContext = createContext([]);
 export const TasksProvider = ({ children }) => {
   const userToken = JSON.parse(localStorage.getItem("user")).token;
   const [tasks, setTaskList] = useState([]);
+  const [error,setError] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export const TasksProvider = ({ children }) => {
   }, []);
 
   return (
-    <TasksContext.Provider value={{ tasks, isLoading, setTaskList }}>
+    <TasksContext.Provider value={{ tasks,error, isLoading, setTaskList }}>
       {children}
     </TasksContext.Provider>
   );
