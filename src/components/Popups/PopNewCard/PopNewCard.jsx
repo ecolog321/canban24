@@ -57,7 +57,6 @@ export function PopNewCard({ $display }) {
       setTaskList(tasksData.tasks);
       navigate(-1);
     } catch (err) {
-      console.log(err);
       setError(err.message);
     }
   }
