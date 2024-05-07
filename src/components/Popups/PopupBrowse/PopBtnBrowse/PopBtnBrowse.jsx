@@ -15,7 +15,6 @@ export const PopBtnBrowse = ({ cardID }) => {
   const { user } = useUserContext();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  console.log(user.token);
 
   async function handleDelete(event) {
     event.preventDefault();

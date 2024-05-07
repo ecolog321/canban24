@@ -1,16 +1,19 @@
 import Calendar from "../../../Calendar/Calendar"
+import { Subtitle } from "../../../styles/shared"
+import { FormBrowseArea, FormBrowseBlock, PopBrowseForm, PopBrowseWrap } from "./Wrap.styled"
 
 
 export const Wrap=()=>{
     return (
-        <div className="pop-browse__wrap">
-								<form className="pop-browse__form form-browse" id="formBrowseCard" action="#">									
-									<div className="form-browse__block">
-										<label htmlFor="textArea01" className="subttl">Описание задачи</label>
-										<textarea className="form-browse__area" name="text" id="textArea01"  readOnly placeholder="Введите описание задачи..."></textarea>
-									</div>
-								</form>
-								<Calendar/>
-							</div>
+
+		<PopBrowseWrap>
+			<PopBrowseForm>
+				<FormBrowseBlock>
+					<Subtitle>Описание задачи</Subtitle>
+					<FormBrowseArea readOnly placeholder="Введите описание задачи" name="text"></FormBrowseArea>
+				</FormBrowseBlock>
+			</PopBrowseForm>
+			<Calendar/>
+		</PopBrowseWrap>
     )
 }
