@@ -1,4 +1,5 @@
-import { PopNewCardCalendar } from "../../PopNewCard/PopNewCardCalenar/PopNewCardCalendar"
+import Calendar from "../../../Calendar/Calendar"
+
 
 export const Wrap=()=>{
     return (
@@ -9,7 +10,7 @@ export const Wrap=()=>{
 										<textarea className="form-browse__area" name="text" id="textArea01"  readOnly placeholder="Введите описание задачи..."></textarea>
 									</div>
 								</form>
-								<PopNewCardCalendar/>
+								<Calendar/>
 							</div>
     )
 }

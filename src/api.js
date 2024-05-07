@@ -1,4 +1,3 @@
-
 export async function getTasks(token) {
   const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
     headers: {
@@ -8,7 +7,8 @@ export async function getTasks(token) {
   });
 
   if (!response.ok) {
-    throw new Error("Ошибка");
+    const error = await response.json();
+    throw new Error(error.error);
   }
 
   const data = await response.json();
@@ -25,14 +25,15 @@ export async function logining(login, password) {
   });
 
   if (!response.ok) {
-    throw new Error("Неверные данные");
+    const error = await response.json();
+    throw new Error(error.error);
   }
 
   const data = await response.json();
-  return  data;
+  return data;
 }
 
-export async function registration(name,login, password) {
+export async function registration(name, login, password) {
   const response = await fetch("https://wedev-api.sky.pro/api/user", {
     method: "POST",
     body: JSON.stringify({
@@ -43,22 +44,31 @@ export async function registration(name,login, password) {
   });
 
   if (!response.ok) {
-    throw new Error("Неверные данные");
+    const error = await response.json();
+    throw new Error(error.error);
   }
 
   const data = await response.json();
   return data;
 }
 
-export async function getTodos() {
-  const response = await fetch("https://wedev-api.sky.pro/api/v2/todos", {
+export async function postTask({ title, topic, description, date, token }) {
+  const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
+    method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify({
+      title,
+      topic,
+      description,
+      date,
+    }),
   });
 
   if (!response.ok) {
-    throw new Error("Ошибка сервера");
+    const error = await response.json();
+    throw new Error(error.error);
   }
 
   const data = await response.json();

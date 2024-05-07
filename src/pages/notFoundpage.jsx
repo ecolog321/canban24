@@ -6,7 +6,7 @@ function NotFoundPage() {
   return (
     <>
       <Wrapper>
-        <Header></Header>
+        <Header/>
         <NotFound />
       </Wrapper>
     </>

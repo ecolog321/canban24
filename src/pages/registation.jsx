@@ -1,12 +1,12 @@
 
 import { Wrapper } from "../components/styles/shared";
-import { Signin } from "../components/Signin/SignIn";
+import { Register } from "../components/Register/Register";
 
-function SignInPage({userLogin}) {
+function SignInPage() {
   return (
     <>
       <Wrapper>
-        <Signin userLogin={userLogin} />
+        <Register />
       </Wrapper>
 
     </>

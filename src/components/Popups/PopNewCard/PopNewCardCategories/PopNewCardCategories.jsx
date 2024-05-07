@@ -1,16 +1,57 @@
-export const PopNewCardCategories=()=>{
-   return <div className="pop-new-card__categories categories">
-        <p className="categories__p subttl">Категория</p>
-        <div className="categories__themes">
-            <div className="categories__theme _orange _active-category">
-                <p className="_orange">Web Design</p>
-            </div>
-            <div className="categories__theme _green">
-                <p className="_green">Research</p>
-            </div>
-            <div className="categories__theme _purple">
-                <p className="_purple">Copywriting</p>
-            </div>
-        </div>
-    </div>
-}
+import {
+  Categories,
+  CategoriesTheme,
+  CategoriesThemes,
+} from "../../../styles/shared";
+
+export const PopNewCardCategories = ({ newTask, setNewTask }) => {
+  return (
+    <Categories>
+      <p>Категории</p>
+      <CategoriesThemes>
+        <CategoriesTheme>
+          <label htmlFor="">
+            Web Design
+            <input
+              onChange={(e) => {
+                setNewTask({ ...newTask, topic: e.target.value });
+              }}
+              type="radio"
+              name="categories"
+              value="Web Design"
+            />
+          </label>
+        </CategoriesTheme>
+        <CategoriesTheme>
+          {" "}
+          <label htmlFor="">
+            Copywriting
+            <input
+              onChange={(e) => {
+                setNewTask({ ...newTask, topic: e.target.value });
+              }}
+              type="radio"
+              name="categories"
+              value="Copywriting"
+            />
+          </label>
+        </CategoriesTheme>
+
+        <CategoriesTheme>
+          {" "}
+          <label htmlFor="">
+            Research
+            <input
+              onChange={(e) => {
+                setNewTask({ ...newTask, topic: e.target.value });
+              }}
+              type="radio"
+              name="categories"
+              value="Research"
+            />
+          </label>
+        </CategoriesTheme>
+      </CategoriesThemes>
+    </Categories>
+  );
+};

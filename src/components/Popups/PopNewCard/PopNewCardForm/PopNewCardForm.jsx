@@ -1,12 +1,32 @@
-export const PopNewCardForm=()=>{
-    return <form className="pop-new-card__form form-new" id="formNewCard" action="#">
-                <div className="form-new__block">
-                    <label htmlFor="formTitle" className="subttl">Название задачи</label>
-                    <input className="form-new__input" type="text" name="name" id="formTitle" placeholder="Введите название задачи..." autoFocus />
-                </div>
-                <div className="form-new__block">
-                    <label htmlFor="textArea" className="subttl">Описание задачи</label>
-                    <textarea className="form-new__area" name="text" id="textArea"  placeholder="Введите описание задачи..."></textarea>
-                </div>
-            </form>
-}
+
+import { Subtitle } from "../../../styles/shared";
+import { PopNewCardArea, PopNewCardBlock, PopNewCardInput, PopNewForm } from "./PopNewCardForm.styled";
+
+
+export const PopNewCardForm = ({ newTask, setNewTask }) => {
+
+
+  return (
+    <PopNewForm>
+      <PopNewCardBlock>
+        <Subtitle>Название задачи</Subtitle>
+        <PopNewCardInput
+          onChange={(e) => {
+            setNewTask({ ...newTask, title: e.target.value });
+          }}
+          placeholder="Введите название задачи..."
+          autoFocus
+        ></PopNewCardInput>
+      </PopNewCardBlock>
+      <PopNewCardBlock>
+        <Subtitle>Описание задачи</Subtitle>
+        <PopNewCardArea
+          onChange={(e) => {
+            setNewTask({ ...newTask, description: e.target.value });
+          }}
+          placeholder="Введите описание задачи..."
+        ></PopNewCardArea>
+      </PopNewCardBlock>
+    </PopNewForm>
+  );
+};

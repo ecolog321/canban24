@@ -1,6 +1,5 @@
 import React from "react";
 import { Btn, Container } from "../styles/shared";
-import UserButton from "../Popups/PopupUser/UserButton/UserButton";
 import { AppRoutes} from "../../lib/routes";
 import { Link } from "react-router-dom";
 
