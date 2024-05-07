@@ -1,5 +1,4 @@
-import { BtnBrowse } from "./BtnBrowse/BtnBrowse";
-import { BtnEdit } from "./BtnEdit/BtnEdit";
+
 import { Status } from "./Status/Status";
 import { ThemeCategories } from "./ThemeCategories/ThemeCategories";
 import { TopBlock } from "./TopBlock/TopBlock";
@@ -10,6 +9,7 @@ import {
   PopBrowseContainer,
   PopBrowseContent,
 } from "./PopupBrowse.styled";
+import { PopBtnBrowse } from "./PopBtnBrowse/PopBtnBrowse";
 
 export const PopupBrowse = ({ cardID, $display }) => {
   return (
@@ -21,8 +21,7 @@ export const PopupBrowse = ({ cardID, $display }) => {
             <Status />
             <Wrap />
             <ThemeCategories />
-            <BtnBrowse />
-            <BtnEdit />
+            <PopBtnBrowse cardID={cardID} />
           </PopBrowseContent>
         </PopBrowseBlock>
       </PopBrowseContainer>
