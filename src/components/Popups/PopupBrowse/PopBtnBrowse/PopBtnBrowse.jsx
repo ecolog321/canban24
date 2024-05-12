@@ -36,7 +36,7 @@ export const PopBtnBrowse = ({ cardID }) => {
     <BtnsBrowse>
       {error ? <h2 style={{ color: "red" }}>{error}</h2> : <></>}
       <BtnGroup>
-        <ButtonBor onClick={handleChange}>Редактировать</ButtonBor>
+        <ButtonBor>Редактировать</ButtonBor>
         <ButtonBor onClick={handleDelete}>Удалить</ButtonBor>
         <ButtonClose onClick={closeBrowse}>Закрыть</ButtonClose>
       </BtnGroup>
