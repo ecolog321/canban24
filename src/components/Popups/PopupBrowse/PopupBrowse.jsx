@@ -1,5 +1,4 @@
 import { Status } from "./Status/Status";
-import { ThemeCategories } from "./ThemeCategories/ThemeCategories";
 import { TopBlock } from "./TopBlock/TopBlock";
 import { Wrap } from "./Wrap/Wrap";
 import {
@@ -26,17 +25,14 @@ export const PopupBrowse = ({ cardID, $display }) => {
     setSelected(currentCard?.date)
   }, []);
 
-  console.log(selected)
-
   return (
     <PopBrowse $display={$display}>
       <PopBrowseContainer>
         <PopBrowseBlock>
           <PopBrowseContent>
             <TopBlock currentCard={currentCard} />
-            <Status />
-            <Wrap currentCard={currentCard} selected={selected} setSelected={setSelected} />
-            <ThemeCategories />
+            <Status currentCard={currentCard}/>
+            <Wrap currentCard={currentCard} selected={currentCard?.date} setSelected={setSelected} />
             <PopBtnBrowse cardID={cardID} />
           </PopBrowseContent>
         </PopBrowseBlock>

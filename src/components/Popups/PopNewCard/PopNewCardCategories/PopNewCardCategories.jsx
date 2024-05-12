@@ -9,7 +9,7 @@ export const PopNewCardCategories = ({ newTask, setNewTask }) => {
     <Categories>
       <p>Категории</p>
       <CategoriesThemes>
-        <CategoriesTheme>
+        <CategoriesTheme $color={"W"}>
           <label htmlFor="">
             Web Design
             <input
@@ -22,8 +22,7 @@ export const PopNewCardCategories = ({ newTask, setNewTask }) => {
             />
           </label>
         </CategoriesTheme>
-        <CategoriesTheme>
-          {" "}
+        <CategoriesTheme $color={"C"}>
           <label htmlFor="">
             Copywriting
             <input
@@ -37,8 +36,7 @@ export const PopNewCardCategories = ({ newTask, setNewTask }) => {
           </label>
         </CategoriesTheme>
 
-        <CategoriesTheme>
-          {" "}
+        <CategoriesTheme $color={"R"}>
           <label htmlFor="">
             Research
             <input

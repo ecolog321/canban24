@@ -1,4 +1,5 @@
 import { css, styled } from "styled-components";
+import { topicStyles } from "../../lib/topic";
 
 export const Hover01 = css`
   &:hover {
@@ -76,6 +77,7 @@ export const CategoriesThemes = styled.div`
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: flex-start;
+  
 `;
 
 export const CategoriesTheme = styled.div`
@@ -85,12 +87,15 @@ export const CategoriesTheme = styled.div`
   padding: 8px 20px;
   border-radius: 24px;
   margin-right: 7px;
-  opacity: 0.4;
+  opacity: 0.8;
+  background: ${({ $color }) => topicStyles[$color]?.backgroundColor || "e9d4fa"};
+  color: ${({$color}) => topicStyles[$color]?.color || ""};
 
   & p {
     font-size: 14px;
     font-weight: 600;
     line-height: 14px;
     white-space: nowrap;
+    
   }
 `;

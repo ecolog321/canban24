@@ -8,6 +8,7 @@ import {
   PopNewContainer,
   PopNewContent,
   PopNewWrap,
+  PopNewWrapBtns,
 } from "./PopNewCard.styled";
 import { PopNewCardCategories } from "./PopNewCardCategories/PopNewCardCategories";
 import { PopNewCardForm } from "./PopNewCardForm/PopNewCardForm";
@@ -77,8 +78,14 @@ export function PopNewCard({ $display }) {
               <Calendar selected={selected} setSelected={setSelected} />
               <PopNewCardCategories newTask={newTask} setNewTask={setNewTask} />
             </PopNewWrap>
-            <PopNewButton onClick={handleSubmit}>Создать задачу</PopNewButton>
-            <PopNewButton onClick={closeWindow}>Закрыть</PopNewButton>
+            <div>
+              <PopNewWrapBtns>
+                <PopNewButton onClick={handleSubmit}>
+                  Создать задачу
+                </PopNewButton>
+                <PopNewButton onClick={closeWindow}>Закрыть</PopNewButton>
+              </PopNewWrapBtns>
+            </div>
           </PopNewContent>
         </PopNewBlock>
       </PopNewContainer>

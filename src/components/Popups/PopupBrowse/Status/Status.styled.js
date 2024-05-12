@@ -9,6 +9,7 @@ export const StatusThemes=styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
+  margin-top:10px;
 `
 
 export const StatusTheme=styled.div`
