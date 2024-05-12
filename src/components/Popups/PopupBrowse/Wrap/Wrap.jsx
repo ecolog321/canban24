@@ -3,7 +3,7 @@ import { Subtitle } from "../../../styles/shared"
 import { FormBrowseArea, FormBrowseBlock, PopBrowseForm, PopBrowseWrap } from "./Wrap.styled"
 
 
-export const Wrap=({currentCard})=>{
+export const Wrap=({currentCard, selected, setSelected})=>{
     return (
 
 		<PopBrowseWrap>
@@ -13,7 +13,7 @@ export const Wrap=({currentCard})=>{
 					<FormBrowseArea readOnly placeholder="Введите описание задачи">{currentCard?.description}</FormBrowseArea>
 				</FormBrowseBlock>
 			</PopBrowseForm>
-			<Calendar/>
+			<Calendar  selected={selected} setSelected={setSelected}/>
 		</PopBrowseWrap>
     )
 }

@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../../../lib/routes";
+import { BtnExit } from "./UserButton.styled";
+import { useNavigate } from "react-router-dom";
 
 function UserButton() {
-    return (
-        <button type="button" className="_hover03"><Link to={AppRoutes.EXIT}>Выйти</Link></button>
-    )
+  const navigate = useNavigate();
+
+  const handleExit = () => {
+    navigate(AppRoutes.EXIT);
+  };
+
+  return <BtnExit onClick={handleExit}>Выйти</BtnExit>;
 }
 
 export default UserButton;

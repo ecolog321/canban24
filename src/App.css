@@ -71,21 +71,6 @@
   justify-content: space-between;
 }
 
-.pop-user-set__name {
-  color: #000;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  letter-spacing: -0.14px;
-  margin-bottom: 4px;
-}
-.pop-user-set__mail {
-  color: #94a6be;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.14px;
-  margin-bottom: 10px;
-}
 .pop-user-set__theme {
   display: flex;
   align-items: center;
@@ -123,14 +108,7 @@
 .pop-user-set__theme input:checked[type="checkbox"]::before {
   left: 12px;
 }
-.pop-user-set button {
-  width: 72px;
-  height: 30px;
-  background: transparent;
-  color: #565eef;
-  border-radius: 4px;
-  border: 1px solid #565eef;
-}
+
 .pop-user-set button a {
   color: #565eef;
 }

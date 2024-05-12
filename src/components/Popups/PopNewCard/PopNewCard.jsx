@@ -72,7 +72,6 @@ export function PopNewCard({ $display }) {
           <PopNewContent>
             <h3>Создание задачи</h3>
             {error ? <h2 style={{ color: "red" }}>{error}</h2> : <></>}
-            <a href=""></a>
             <PopNewWrap>
               <PopNewCardForm newTask={newTask} setNewTask={setNewTask} />
               <Calendar selected={selected} setSelected={setSelected} />

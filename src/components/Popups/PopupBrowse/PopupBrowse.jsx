@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 export const PopupBrowse = ({ cardID, $display }) => {
   const { tasks } = useTasks();
   const [currentCard, setCurrentCard] = useState();
+  const [selected, setSelected] = useState();
 
   useEffect(() => {
     for (let i = 0; i < tasks.length; i++) {
@@ -22,7 +23,10 @@ export const PopupBrowse = ({ cardID, $display }) => {
         setCurrentCard(tasks[i]);
       }
     }
+    setSelected(currentCard?.date)
   }, []);
+
+  console.log(selected)
 
   return (
     <PopBrowse $display={$display}>
@@ -31,7 +35,7 @@ export const PopupBrowse = ({ cardID, $display }) => {
           <PopBrowseContent>
             <TopBlock currentCard={currentCard} />
             <Status />
-            <Wrap currentCard={currentCard} />
+            <Wrap currentCard={currentCard} selected={selected} setSelected={setSelected} />
             <ThemeCategories />
             <PopBtnBrowse cardID={cardID} />
           </PopBrowseContent>
