@@ -5,7 +5,7 @@ import {
   ButtonBor,
   ButtonClose,
 } from "./PopBtnBrowse.styled.js";
-import { deleteTask } from "../../../../api.js";
+import { deleteTask, changeTask } from "../../../../api.js";
 import { useTasks } from "../../../../context/hooks/useTasks.js";
 import { useUserContext } from "../../../../context/hooks/useUser.js";
 import { useState } from "react";
@@ -36,7 +36,7 @@ export const PopBtnBrowse = ({ cardID }) => {
     <BtnsBrowse>
       {error ? <h2 style={{ color: "red" }}>{error}</h2> : <></>}
       <BtnGroup>
-        <ButtonBor>Редактировать</ButtonBor>
+        <ButtonBor onClick={handleChange}>Редактировать</ButtonBor>
         <ButtonBor onClick={handleDelete}>Удалить</ButtonBor>
         <ButtonClose onClick={closeBrowse}>Закрыть</ButtonClose>
       </BtnGroup>
