@@ -10,27 +10,28 @@ import {
 } from "./PopupBrowse.styled";
 import { PopBtnBrowse } from "./PopBtnBrowse/PopBtnBrowse";
 import { useTasks } from "../../../context/hooks/useTasks";
+import { useEffect, useState } from "react";
 
 export const PopupBrowse = ({ cardID, $display }) => {
   const { tasks } = useTasks();
+  const [currentCard, setCurrentCard] = useState();
 
-  const currentTask=tasks.map((task)=> { 
-    if (task._id===cardID) {
-      currentTask=task;
-      console.log(currentTask)
+  useEffect(() => {
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i]._id === cardID) {
+        setCurrentCard(tasks[i]);
+      }
     }
-   });
-
-
+  }, []);
 
   return (
     <PopBrowse $display={$display}>
       <PopBrowseContainer>
         <PopBrowseBlock>
           <PopBrowseContent>
-            <TopBlock cardID={cardID} />
+            <TopBlock currentCard={currentCard} />
             <Status />
-            <Wrap />
+            <Wrap currentCard={currentCard} />
             <ThemeCategories />
             <PopBtnBrowse cardID={cardID} />
           </PopBrowseContent>

@@ -1,11 +1,11 @@
 import { CategoriesTheme } from "../../../styles/shared";
 import { PopBrowseTopBlock, PopBrowseTtl } from "./TopBlock.styled";
 
-export const TopBlock = ({ cardID }) => {
+export const TopBlock = ({ currentCard}) => {
   return (
     <PopBrowseTopBlock>
-      <PopBrowseTtl>{`Задача #${cardID}`}</PopBrowseTtl>
-      <CategoriesTheme>Web Design</CategoriesTheme>
+      <PopBrowseTtl>{`Задача "${currentCard?.title}"`}</PopBrowseTtl>
+      <CategoriesTheme>{currentCard?.topic}</CategoriesTheme>
     </PopBrowseTopBlock>
   );
 };

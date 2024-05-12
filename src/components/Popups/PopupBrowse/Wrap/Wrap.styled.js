@@ -1,26 +1,27 @@
 import styled from "styled-components";
 
-export const PopBrowseWrap=styled.div`
-display: flex;
+export const PopBrowseWrap = styled.div`
+  display: flex;
   align-items: flex-start;
   justify-content: space-between;
-`
+`;
 
-export const PopBrowseForm=styled.form`
+export const PopBrowseForm = styled.form`
   max-width: 370px;
   width: 100%;
   display: block;
   margin-bottom: 20px;
-`
+`;
 
-export const FormBrowseBlock=styled.div`
+export const FormBrowseBlock = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
-export const FormBrowseArea=styled.textarea`
- max-width: 370px;
+export const FormBrowseArea = styled.textarea`
+  max-width: 370px;
   width: 100%;
+  background: transparent;
   outline: none;
   padding: 14px;
   background: #eaeef6;
@@ -33,18 +34,18 @@ export const FormBrowseArea=styled.textarea`
   height: 200px;
 
   & ::-moz-placeholder {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1px;
-  color: #94a6be;
-  letter-spacing: -0.14px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1px;
+    color: #94a6be;
+    letter-spacing: -0.14px;
   }
 
   &::placeholder {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1px;
-  color: #94a6be;
-  letter-spacing: -0.14px;
-}
-`
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1px;
+    color: #94a6be;
+    letter-spacing: -0.14px;
+  }
+`;
