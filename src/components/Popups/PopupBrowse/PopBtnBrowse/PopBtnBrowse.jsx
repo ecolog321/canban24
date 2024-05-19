@@ -10,7 +10,7 @@ import { useTasks } from "../../../../context/hooks/useTasks.js";
 import { useUserContext } from "../../../../context/hooks/useUser.js";
 import { useState } from "react";
 
-export const PopBtnBrowse = ({ cardID }) => {
+export const PopBtnBrowse = ({ cardID, handleEditCard, isEdit }) => {
   const { setTaskList } = useTasks();
   const { user } = useUserContext();
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const PopBtnBrowse = ({ cardID }) => {
   async function handleDelete(event) {
     event.preventDefault();
     try {
-      const tasksData = await deleteTask({ id:cardID, token: user.token });
+      const tasksData = await deleteTask({ id: cardID, token: user.token });
 
       setTaskList(tasksData.tasks);
       navigate(-1);
@@ -36,9 +36,20 @@ export const PopBtnBrowse = ({ cardID }) => {
     <BtnsBrowse>
       {error ? <h2 style={{ color: "red" }}>{error}</h2> : <></>}
       <BtnGroup>
-        <ButtonBor>Редактировать</ButtonBor>
-        <ButtonBor onClick={handleDelete}>Удалить</ButtonBor>
-        <ButtonClose onClick={closeBrowse}>Закрыть</ButtonClose>
+        {isEdit ? (
+          <>
+            <ButtonBor>Сохранить</ButtonBor>
+            <ButtonBor onClick={handleEditCard}>Отменить</ButtonBor>
+            <ButtonBor onClick={handleDelete}>Удалить</ButtonBor>
+            <ButtonClose onClick={closeBrowse}>Закрыть</ButtonClose>
+          </>
+        ) : (
+          <>
+            <ButtonBor onClick={handleEditCard}>Редактировать</ButtonBor>
+            <ButtonBor onClick={handleDelete}>Удалить</ButtonBor>
+            <ButtonClose onClick={closeBrowse}>Закрыть</ButtonClose>{" "}
+          </>
+        )}
       </BtnGroup>
     </BtnsBrowse>
   );

@@ -84,7 +84,7 @@ export const CategoriesTheme = styled.div`
   display: inline-block;
   width: auto;
   height: 30px;
-  padding: 8px 20px;
+  padding: 5px 20px;
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.8;
@@ -97,5 +97,9 @@ export const CategoriesTheme = styled.div`
     line-height: 14px;
     white-space: nowrap;
     
+  }
+
+  & input {
+    display:none;
   }
 `;

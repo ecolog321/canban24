@@ -15,6 +15,7 @@ export const PopupBrowse = ({ cardID, $display }) => {
   const { tasks } = useTasks();
   const [currentCard, setCurrentCard] = useState();
   const [selected, setSelected] = useState();
+  const [isEdit, setIsEdit]=useState(false);
 
   useEffect(() => {
     for (let i = 0; i < tasks.length; i++) {
@@ -22,8 +23,15 @@ export const PopupBrowse = ({ cardID, $display }) => {
         setCurrentCard(tasks[i]);
       }
     }
+  },[tasks]);
+
+  useEffect (()=>{
     setSelected(currentCard?.date)
-  }, []);
+  },[<PopBrowse></PopBrowse>])
+
+  const handleEditCard=()=>{
+    setIsEdit(!isEdit);
+  }
 
   return (
     <PopBrowse $display={$display}>
@@ -31,9 +39,9 @@ export const PopupBrowse = ({ cardID, $display }) => {
         <PopBrowseBlock>
           <PopBrowseContent>
             <TopBlock currentCard={currentCard} />
-            <Status currentCard={currentCard}/>
-            <Wrap currentCard={currentCard} selected={currentCard?.date} setSelected={setSelected} />
-            <PopBtnBrowse cardID={cardID} />
+            <Status currentCard={currentCard} isEdit={isEdit}/>
+            <Wrap isEdit={isEdit} currentCard={currentCard} selected={selected} setSelected={setSelected} />
+            <PopBtnBrowse cardID={cardID} handleEditCard={handleEditCard} isEdit={isEdit}/>
           </PopBrowseContent>
         </PopBrowseBlock>
       </PopBrowseContainer>
