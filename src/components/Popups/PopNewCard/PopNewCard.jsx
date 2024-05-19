@@ -15,9 +15,10 @@ import { PopNewCardForm } from "./PopNewCardForm/PopNewCardForm";
 import { useState } from "react";
 import { useUserContext } from "../../../context/hooks/useUser";
 import { useTasks } from "../../../context/hooks/useTasks";
+import { ContainerCard } from "../../styles/shared";
 
 export function PopNewCard({ $display }) {
-  const { tasks, setTaskList } = useTasks();
+  const { setTaskList } = useTasks();
   const { user } = useUserContext();
   const navigate = useNavigate();
   const [selected, setSelected] = useState();
@@ -74,8 +75,9 @@ export function PopNewCard({ $display }) {
             <h3>Создание задачи</h3>
             {error ? <h2 style={{ color: "red" }}>{error}</h2> : <></>}
             <PopNewWrap>
-              <PopNewCardForm newTask={newTask} setNewTask={setNewTask} />
-              <Calendar selected={selected} setSelected={setSelected} />
+              <ContainerCard><PopNewCardForm newTask={newTask} setNewTask={setNewTask} />
+              <Calendar selected={selected} setSelected={setSelected} /></ContainerCard>
+              
               <PopNewCardCategories newTask={newTask} setNewTask={setNewTask} />
             </PopNewWrap>
             <div>

@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { editTask } from "../../../api";
 
 export const PopupBrowse = ({ cardID, $display }) => {
-  const { tasks } = useTasks();
+  const { tasks, isLoading } = useTasks();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [currentCard, setCurrentCard] = useState();
@@ -27,8 +27,11 @@ export const PopupBrowse = ({ cardID, $display }) => {
 
   useEffect(() => {
     setCurrentCard(tasks.find((task) => task._id === cardID));
-    setSelected(currentCard?.date);
   }, [tasks]);
+
+  useEffect(() => {
+    setSelected(currentCard?.date);
+  }, [<PopBrowse />]);
 
   function handleEditCard() {
     setIsEdit(!isEdit);
@@ -63,22 +66,29 @@ export const PopupBrowse = ({ cardID, $display }) => {
       <PopBrowseContainer>
         <PopBrowseBlock>
           <PopBrowseContent>
-            <TopBlock currentCard={currentCard} />
-            <Status currentCard={currentCard} isEdit={isEdit} />
-            <Wrap
-              isEdit={isEdit}
-              currentCard={currentCard}
-              setCurrentCard={setCurrentCard}
-              setChangedTask={setChangedTask}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <PopBtnBrowse
-              cardID={cardID}
-              handleEditCard={handleEditCard}
-              isEdit={isEdit}
-              handleSaveCard={handleSaveCard}
-            />
+            {isLoading ? (
+              <h2>Идет загрузка</h2>
+            ) : (
+              <>
+                <TopBlock currentCard={currentCard} />
+                <Status currentCard={currentCard} isEdit={isEdit} />
+                <Wrap
+                  isEdit={isEdit}
+                  currentCard={currentCard}
+                  setCurrentCard={setCurrentCard}
+                  setChangedTask={setChangedTask}
+                  selected={selected}
+                  setSelected={setSelected}
+                />
+                <PopBtnBrowse
+                  cardID={cardID}
+                  handleEditCard={handleEditCard}
+                  isEdit={isEdit}
+                  handleSaveCard={handleSaveCard}
+                />
+              </>
+            )}
+            {error ? <h2 style={{ color: "red" }}>{error}</h2> : <></>}
           </PopBrowseContent>
         </PopBrowseBlock>
       </PopBrowseContainer>

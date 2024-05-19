@@ -52,6 +52,14 @@ export const Container = styled.div`
   padding: 0 30px;
 `;
 
+export const ContainerCard = styled.div`
+  display: flex;
+  max-width: 1260px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 px;
+`;
+
 export const Wrapper = styled.div`
   max-width: 100%;
   width: 100vw;
@@ -77,7 +85,6 @@ export const CategoriesThemes = styled.div`
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: flex-start;
-  
 `;
 
 export const CategoriesTheme = styled.div`
@@ -88,18 +95,18 @@ export const CategoriesTheme = styled.div`
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.8;
-  background: ${({ $color }) => topicStyles[$color]?.backgroundColor || "e9d4fa"};
-  color: ${({$color}) => topicStyles[$color]?.color || ""};
+  background: ${({ $color }) =>
+    topicStyles[$color]?.backgroundColor || "e9d4fa"};
+  color: ${({ $color }) => topicStyles[$color]?.color || ""};
 
   & p {
     font-size: 14px;
     font-weight: 600;
     line-height: 14px;
     white-space: nowrap;
-    
   }
 
   & input {
-    display:none;
+    display: none;
   }
 `;
