@@ -5,12 +5,12 @@ import {
   ButtonBor,
   ButtonClose,
 } from "./PopBtnBrowse.styled.js";
-import { deleteTask, changeTask } from "../../../../api.js";
+import { deleteTask} from "../../../../api.js";
 import { useTasks } from "../../../../context/hooks/useTasks.js";
 import { useUserContext } from "../../../../context/hooks/useUser.js";
 import { useState } from "react";
 
-export const PopBtnBrowse = ({ cardID, handleEditCard, isEdit }) => {
+export const PopBtnBrowse = ({ cardID, handleEditCard, isEdit, handleSaveCard }) => {
   const { setTaskList } = useTasks();
   const { user } = useUserContext();
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ export const PopBtnBrowse = ({ cardID, handleEditCard, isEdit }) => {
       <BtnGroup>
         {isEdit ? (
           <>
-            <ButtonBor>Сохранить</ButtonBor>
+            <ButtonBor onClick={handleSaveCard}>Сохранить</ButtonBor>
             <ButtonBor onClick={handleEditCard}>Отменить</ButtonBor>
             <ButtonBor onClick={handleDelete}>Удалить</ButtonBor>
             <ButtonClose onClick={closeBrowse}>Закрыть</ButtonClose>

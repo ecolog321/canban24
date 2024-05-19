@@ -75,10 +75,11 @@ export async function postTask({ title, topic, description, date, token }) {
   return data;
 }
 
-export async function changeTask({
+export async function editTask({
   id,
   title,
   topic,
+  status,
   description,
   date,
   token,
@@ -91,6 +92,7 @@ export async function changeTask({
     body: JSON.stringify({
       title,
       topic,
+      status,
       description,
       date,
     }),
