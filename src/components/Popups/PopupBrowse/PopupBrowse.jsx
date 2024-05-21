@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { Status } from "./Status/Status";
 import { TopBlock } from "./TopBlock/TopBlock";
 import { Wrap } from "./Wrap/Wrap";
@@ -12,17 +11,20 @@ import { PopBtnBrowse } from "./PopBtnBrowse/PopBtnBrowse";
 import { useTasks } from "../../../context/hooks/useTasks";
 import { useEffect, useState } from "react";
 import { editTask } from "../../../api";
+import { useUserContext } from "../../../context/hooks/useUser";
 
 export const PopupBrowse = ({ cardID, $display }) => {
-  const { tasks, isLoading } = useTasks();
-  const navigate = useNavigate();
+  const { tasks, setTaskList, isLoading } = useTasks();
+  const { user } = useUserContext();
   const [error, setError] = useState(null);
   const [currentCard, setCurrentCard] = useState();
   const [selected, setSelected] = useState();
   const [isEdit, setIsEdit] = useState(false);
   const [changedTask, setChangedTask] = useState({
-    description: "",
+    title: "",
+    topic:"",
     status: "",
+    description: "",
   });
 
   useEffect(() => {
@@ -30,15 +32,11 @@ export const PopupBrowse = ({ cardID, $display }) => {
   }, [tasks]);
 
   useEffect(() => {
-    setSelected(currentCard?.date);
-  }, [<PopBrowse />]);
+    setSelected(selected ? selected : currentCard?.date);
+  }, [<PopBtnBrowse></PopBtnBrowse>]);
 
   function handleEditCard() {
     setIsEdit(!isEdit);
-  }
-
-  function handleCancel() {
-    setCurrentCard();
   }
 
   async function handleSaveCard() {
@@ -46,16 +44,16 @@ export const PopupBrowse = ({ cardID, $display }) => {
       setError("Заполните описание");
       return;
     }
-    const newTaskData = { ...changedTask, data: selected };
+    const newTaskData = { ...changedTask, date: selected };
 
     try {
       const tasksData = await editTask({
         ...newTaskData,
         token: user?.token,
-        id: currentCard?.id,
+        id: currentCard?._id,
       });
       setTaskList(tasksData.tasks);
-      navigate(0);
+      setIsEdit(!isEdit);
     } catch (err) {
       setError(err.message);
     }
@@ -71,7 +69,12 @@ export const PopupBrowse = ({ cardID, $display }) => {
             ) : (
               <>
                 <TopBlock currentCard={currentCard} />
-                <Status currentCard={currentCard} isEdit={isEdit} />
+                <Status
+                  changedTask={changedTask}
+                  setChangedTask={setChangedTask}
+                  currentCard={currentCard}
+                  isEdit={isEdit}
+                />
                 <Wrap
                   isEdit={isEdit}
                   currentCard={currentCard}

@@ -38,6 +38,10 @@ export const Btn = styled.button`
   ${Hover01}
 `;
 
+export const CommonInput=styled.input`
+
+`
+
 export const Subtitle = styled.label`
   color: #000;
   font-size: 14px;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Categories,
   CategoriesTheme,
@@ -5,25 +6,36 @@ import {
 } from "../../../styles/shared";
 
 export const PopNewCardCategories = ({ newTask, setNewTask }) => {
+
+  const [categoria, setCategoria]=useState();
+
+  const handleChangeCat = (e) => {
+    setNewTask({ ...newTask, topic: e.target.value });
+  };
+
+  const handleCheckCat=(e)=>{
+    setCategoria(e.target.value)
+  }
+
   return (
     <Categories>
       <p>Категории</p>
       <CategoriesThemes>
-        <CategoriesTheme $color={"W"}>
-          <label htmlFor="">
-            Web Design
-            <input
-              onChange={(e) => {
-                setNewTask({ ...newTask, topic: e.target.value });
-              }}
-              type="radio"
-              name="categories"
-              value="Web Design"
-            />
+        <CategoriesTheme onClick={handleCheckCat} $color={"W"}>
+          <label onClick={handleChangeCat} value="Web Design">
+          Web Design
+          <input
+            onChange={(e) => {
+              setNewTask({ ...newTask, topic: e.target.value });
+            }}
+            type="radio"
+            name="categories"
+            value="Web Design"
+          />
           </label>
         </CategoriesTheme>
         <CategoriesTheme $color={"C"}>
-          <label htmlFor="">
+          <label onClick={handleChangeCat} value="Copywriting">
             Copywriting
             <input
               onChange={(e) => {
@@ -37,7 +49,7 @@ export const PopNewCardCategories = ({ newTask, setNewTask }) => {
         </CategoriesTheme>
 
         <CategoriesTheme $color={"R"}>
-          <label htmlFor="">
+          <label onClick={handleChangeCat} value="Research">
             Research
             <input
               onChange={(e) => {

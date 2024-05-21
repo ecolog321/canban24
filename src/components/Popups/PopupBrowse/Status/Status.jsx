@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { Children, useState } from "react";
 import { Subtitle } from "../../../styles/shared";
 import { PopBrowseStatus, StatusTheme, StatusThemes } from "./Status.styled";
 import { statusList } from "../../../../lib/status";
 
-export const Status = ({ currentCard, isEdit }) => {
+export const Status = ({changedTask,setChangedTask, currentCard, isEdit }) => {
+
+  const changeStatus=(e)=>{
+    setChangedTask({status:e.target.value })
+    console.log(changedTask)
+  }
+
   return (
     <PopBrowseStatus>
       <Subtitle>Статус</Subtitle>
@@ -11,7 +17,7 @@ export const Status = ({ currentCard, isEdit }) => {
         {isEdit ? (
           statusList.map((status) => {
             return (
-              <StatusTheme key={status} $isEdit={isEdit}>
+              <StatusTheme onClick={changeStatus} key={status} $isEdit={currentCard.status===status? false:true}>
                 <label>
                   <input type="radio" name="status" value={status}></input>
                 </label>
