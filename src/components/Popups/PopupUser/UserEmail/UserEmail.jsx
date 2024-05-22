@@ -1,7 +1,9 @@
+import { PopUserMail } from "./UserEmail.styled";
+
 function UserEmail() {
-    return (
-        <p className="pop-user-set__mail">{JSON.parse(localStorage.getItem("user")).login}</p>
-    )
+  return (
+    <PopUserMail>{JSON.parse(localStorage.getItem("user")).login}</PopUserMail>
+  );
 }
 
 export default UserEmail;

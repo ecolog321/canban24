@@ -1,25 +1,56 @@
-export const Status=()=>{
-    return      <div className="pop-browse__status status">
-                    <p className="status__p subttl">Статус</p>
-                    <div className="status__themes">
-                        <div className="status__theme _hide">
-                            <p>Без статуса</p>
-                        </div>
-                        <div className="status__theme _gray">
-                            <p className="_gray">Нужно сделать</p>
-                        </div>
-                        <div className="status__theme _hide">
-                            <p>В работе</p>
-                        </div>
-                        <div className="status__theme _hide">
-                            <p>Тестирование</p>
-                        </div>
-                        <div className="status__theme _hide">
-                            <p>Готово</p>
-                        </div>
-                    </div>
-                </div>
-}    
-                            
-                            
-                           
+import { useState } from "react";
+import { CommonInput, Subtitle } from "../../../styles/shared";
+import { PopBrowseStatus, StatusTheme, StatusThemes } from "./Status.styled";
+import { statusList } from "../../../../lib/status";
+
+export const Status = ({
+  setChangedTask,
+  currentCard,
+  setCurrentCard,
+  isEdit,
+}) => {
+
+  
+
+  return (
+    <PopBrowseStatus>
+      <Subtitle>Статус</Subtitle>
+      <StatusThemes>
+        {isEdit ? (
+          statusList.map((status) => {
+            return (
+              <StatusTheme
+                key={status}
+                $isEdit={currentCard.status === status ? false : true}
+              >
+                <label>
+                  {status}
+                  <CommonInput
+                    onClick={(e) => {
+                      setChangedTask({...currentCard,status: e.target.value});
+                      setCurrentCard({...currentCard,status:e.target.value})
+                    }}
+                    type="radio"
+                    name="status"
+                    value={status}
+                  ></CommonInput>
+                </label>
+              </StatusTheme>
+            );
+          })
+        ) : (
+          <StatusTheme $isEdit={isEdit}>
+            <label>
+              {currentCard?.status}
+              <input
+                type="radio"
+                name="status"
+                value={currentCard?.status}
+              ></input>
+            </label>
+          </StatusTheme>
+        )}
+      </StatusThemes>
+    </PopBrowseStatus>
+  );
+};

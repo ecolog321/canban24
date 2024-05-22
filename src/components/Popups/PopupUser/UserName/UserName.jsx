@@ -1,7 +1,9 @@
+import { PopUserName } from "./UserName.styled";
+
 function UserName() {
-    return (
-		<p className="pop-user-set__name">{JSON.parse(localStorage.getItem("user")).name}</p> 
-    )
+  return (
+    <PopUserName>{JSON.parse(localStorage.getItem("user")).name}</PopUserName>
+  );
 }
 
 export default UserName;

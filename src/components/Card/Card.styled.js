@@ -23,7 +23,6 @@ padding: 5px;
 `;
 
 export const CardsC=styled.div`
-width: 220px;
   height: 130px;
   background-color: #ffffff;
   border-radius: 10px;

@@ -1,27 +1,30 @@
 import { useUserContext } from "../../../../context/hooks/useUser";
 import { AppRoutes } from "../../../../lib/routes";
-import { Link } from "react-router-dom";
+import {
+  ExitBtnNo,
+  ExitBtnYes,
+  ExitForm,
+  ExitFormGroup,
+} from "./PopExitForm.styled";
+import { useNavigate } from "react-router-dom";
 
 export const PopExitForm = () => {
   const { logOut } = useUserContext();
-  const toogleAuth = () => {
+  const navigate = useNavigate();
+  const handleLogOut = () => {
     logOut();
   };
 
+  const handleStay = () => {
+    navigate(AppRoutes.HOME);
+  };
+
   return (
-    <form className="pop-exit__form" id="formExit" action="#">
-      <div className="pop-exit__form-group">
-        <button
-          onClick={toogleAuth}
-          className="pop-exit__exit-yes _hover01"
-          id="exitYes"
-        >
-          <Link to={AppRoutes.LOGIN}>Да, выйти</Link>
-        </button>
-        <button className="pop-exit__exit-no _hover03" id="exitNo">
-          <Link to={AppRoutes.HOME}>Нет, остаться</Link>
-        </button>
-      </div>
-    </form>
+    <ExitForm>
+      <ExitFormGroup>
+        <ExitBtnYes onClick={handleLogOut}>Да, выйти</ExitBtnYes>
+        <ExitBtnNo onClick={handleStay}>Нет, остаться</ExitBtnNo>
+      </ExitFormGroup>
+    </ExitForm>
   );
 };

@@ -55,6 +55,7 @@ export const FormLogIn = styled.form`
 `;
 
 export const ModalInput = styled.input`
+margin-bottom:7px;
   width: 100%;
   min-width: 100%;
   border-radius: 8px;
