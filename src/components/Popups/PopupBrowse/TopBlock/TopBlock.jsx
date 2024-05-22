@@ -5,7 +5,7 @@ export const TopBlock = ({ currentCard}) => {
   return (
     <PopBrowseTopBlock>
       <PopBrowseTtl>{`Задача "${currentCard?.title}"`}</PopBrowseTtl>
-      <CategoriesTheme $color={currentCard?.topic[0]}>{currentCard?.topic}</CategoriesTheme>
+      <CategoriesTheme $isCheck={true} $color={currentCard?.topic[0]}>{currentCard?.topic}</CategoriesTheme>
     </PopBrowseTopBlock>
   );
 };

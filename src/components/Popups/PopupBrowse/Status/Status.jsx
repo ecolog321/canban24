@@ -1,15 +1,13 @@
-import { Children, useState } from "react";
-import { Subtitle } from "../../../styles/shared";
+import { useState } from "react";
+import { CommonInput, Subtitle } from "../../../styles/shared";
 import { PopBrowseStatus, StatusTheme, StatusThemes } from "./Status.styled";
 import { statusList } from "../../../../lib/status";
 
-export const Status = ({changedTask,setChangedTask, currentCard, isEdit }) => {
-
-  const changeStatus=(e)=>{
-    setChangedTask({status:e.target.value })
-    console.log(changedTask)
-  }
-
+export const Status = ({
+  setChangedTask,
+  currentCard,
+  isEdit,
+}) => {
   return (
     <PopBrowseStatus>
       <Subtitle>Статус</Subtitle>
@@ -17,11 +15,21 @@ export const Status = ({changedTask,setChangedTask, currentCard, isEdit }) => {
         {isEdit ? (
           statusList.map((status) => {
             return (
-              <StatusTheme onClick={changeStatus} key={status} $isEdit={currentCard.status===status? false:true}>
+              <StatusTheme
+                key={status}
+                $isEdit={currentCard.status === status ? false : true}
+              >
                 <label>
-                  <input type="radio" name="status" value={status}></input>
+                  {status}
+                  <CommonInput
+                    onClick={(e) => {
+                      setChangedTask({status: e.target.value});
+                    }}
+                    type="radio"
+                    name="status"
+                    value={status}
+                  ></CommonInput>
                 </label>
-                {status}
               </StatusTheme>
             );
           })

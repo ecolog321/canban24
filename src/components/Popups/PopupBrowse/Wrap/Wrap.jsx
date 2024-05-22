@@ -15,8 +15,6 @@ export const Wrap = ({
   isEdit,
   setChangedTask,
 }) => {
-
-
   return (
     <PopBrowseWrap>
       <PopBrowseForm>
@@ -27,10 +25,10 @@ export const Wrap = ({
             readOnly={!isEdit}
             placeholder="Введите описание задачи"
             value={currentCard?.description}
-            onChange={(e)=>{
-				setChangedTask({...currentCard, description:e.target.value})
-				setCurrentCard({...currentCard, description:e.target.value})
-			}}
+            onChange={(e) => {
+              setChangedTask({ ...currentCard, description: e.target.value });
+              setCurrentCard({ ...currentCard, description: e.target.value });
+            }}
           >
             {currentCard?.description}
           </FormBrowseArea>

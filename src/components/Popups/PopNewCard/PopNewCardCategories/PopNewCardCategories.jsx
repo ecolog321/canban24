@@ -3,62 +3,65 @@ import {
   Categories,
   CategoriesTheme,
   CategoriesThemes,
+  CommonInput,
 } from "../../../styles/shared";
 
 export const PopNewCardCategories = ({ newTask, setNewTask }) => {
-
-  const [categoria, setCategoria]=useState();
-
-  const handleChangeCat = (e) => {
-    setNewTask({ ...newTask, topic: e.target.value });
-  };
-
-  const handleCheckCat=(e)=>{
-    setCategoria(e.target.value)
-  }
+  const [isWeb, setIsWeb] = useState(false);
+  const [isCopy, setIsCopy] = useState(false);
+  const [isResearch, setIsResearch] = useState(false);
 
   return (
     <Categories>
       <p>Категории</p>
       <CategoriesThemes>
-        <CategoriesTheme onClick={handleCheckCat} $color={"W"}>
-          <label onClick={handleChangeCat} value="Web Design">
-          Web Design
-          <input
-            onChange={(e) => {
-              setNewTask({ ...newTask, topic: e.target.value });
-            }}
-            type="radio"
-            name="categories"
-            value="Web Design"
-          />
+        <CategoriesTheme $isCheck={isWeb} $color={"W"}>
+          <label>
+            Web Design
+            <CommonInput
+              onClick={(e) => {
+                setNewTask({ ...newTask, topic: e.target.value });
+                setIsWeb(true);
+                setIsCopy(false);
+                setIsResearch(false);
+              }}
+              type="radio"
+              name="categories"
+              value="Web Design"
+            ></CommonInput>
           </label>
         </CategoriesTheme>
-        <CategoriesTheme $color={"C"}>
-          <label onClick={handleChangeCat} value="Copywriting">
+        <CategoriesTheme $isCheck={isCopy} $color={"C"}>
+          <label>
             Copywriting
-            <input
-              onChange={(e) => {
+            <CommonInput
+              onClick={(e) => {
                 setNewTask({ ...newTask, topic: e.target.value });
+                setIsWeb(false);
+                setIsCopy(true);
+                setIsResearch(false);
               }}
               type="radio"
               name="categories"
               value="Copywriting"
-            />
+            ></CommonInput>
           </label>
         </CategoriesTheme>
 
-        <CategoriesTheme $color={"R"}>
-          <label onClick={handleChangeCat} value="Research">
+        <CategoriesTheme $isCheck={isResearch} $color={"R"}>
+          <label>
             Research
-            <input
-              onChange={(e) => {
+            <CommonInput
+              onClick={(e) => {
                 setNewTask({ ...newTask, topic: e.target.value });
+                setIsWeb(false);
+                setIsCopy(false);
+                setIsResearch(true);
               }}
               type="radio"
               name="categories"
               value="Research"
-            />
+            ></CommonInput>
           </label>
         </CategoriesTheme>
       </CategoriesThemes>

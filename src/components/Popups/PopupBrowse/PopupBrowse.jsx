@@ -12,6 +12,7 @@ import { useTasks } from "../../../context/hooks/useTasks";
 import { useEffect, useState } from "react";
 import { editTask } from "../../../api";
 import { useUserContext } from "../../../context/hooks/useUser";
+import Calendar from "../../Calendar/Calendar";
 
 export const PopupBrowse = ({ cardID, $display }) => {
   const { tasks, setTaskList, isLoading } = useTasks();
@@ -21,26 +22,26 @@ export const PopupBrowse = ({ cardID, $display }) => {
   const [selected, setSelected] = useState();
   const [isEdit, setIsEdit] = useState(false);
   const [changedTask, setChangedTask] = useState({
-    title: "",
-    topic:"",
     status: "",
     description: "",
   });
 
   useEffect(() => {
     setCurrentCard(tasks.find((task) => task._id === cardID));
+    setChangedTask({ ...currentCard });
+    console.log(currentCard);
   }, [tasks]);
 
   useEffect(() => {
     setSelected(selected ? selected : currentCard?.date);
-  }, [<PopBtnBrowse></PopBtnBrowse>]);
+  }, []);
 
   function handleEditCard() {
     setIsEdit(!isEdit);
   }
 
   async function handleSaveCard() {
-    if (changedTask.description === "") {
+    if ((currentCard.description === "") & (changedTask.description === "")) {
       setError("Заполните описание");
       return;
     }
@@ -73,6 +74,7 @@ export const PopupBrowse = ({ cardID, $display }) => {
                   changedTask={changedTask}
                   setChangedTask={setChangedTask}
                   currentCard={currentCard}
+                  setCurrentCard={setCurrentCard}
                   isEdit={isEdit}
                 />
                 <Wrap

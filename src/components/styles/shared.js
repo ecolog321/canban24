@@ -98,7 +98,7 @@ export const CategoriesTheme = styled.div`
   padding: 5px 20px;
   border-radius: 24px;
   margin-right: 7px;
-  opacity: 0.8;
+  opacity: ${({$isCheck})=> $isCheck ? "1" : "0.5"};
   background: ${({ $color }) =>
     topicStyles[$color]?.backgroundColor || "e9d4fa"};
   color: ${({ $color }) => topicStyles[$color]?.color || ""};
@@ -111,6 +111,6 @@ export const CategoriesTheme = styled.div`
   }
 
   & input {
-    display: none;
+    display:none;
   }
 `;
