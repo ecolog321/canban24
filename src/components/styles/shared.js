@@ -38,9 +38,9 @@ export const Btn = styled.button`
   ${Hover01}
 `;
 
-export const CommonInput=styled.input`
-
-`
+export const CommonInput = styled.input`
+  cursor: pointer;
+`;
 
 export const Subtitle = styled.label`
   color: #000;
@@ -54,6 +54,18 @@ export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 0 30px;
+`;
+
+export const ContainerNotFound = styled.div`
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  gap: 16px;
 `;
 
 export const ContainerCard = styled.div`
@@ -98,19 +110,25 @@ export const CategoriesTheme = styled.div`
   padding: 5px 20px;
   border-radius: 24px;
   margin-right: 7px;
-  opacity: ${({$isCheck})=> $isCheck ? "1" : "0.5"};
+  opacity: ${({ $isCheck }) => ($isCheck ? "1" : "0.5")};
   background: ${({ $color }) =>
     topicStyles[$color]?.backgroundColor || "e9d4fa"};
   color: ${({ $color }) => topicStyles[$color]?.color || ""};
+  cursor: pointer;
 
   & p {
     font-size: 14px;
     font-weight: 600;
     line-height: 14px;
     white-space: nowrap;
+    cursor: pointer;
+  }
+
+  & label {
+    cursor: pointer;
   }
 
   & input {
-    display:none;
+    display: none;
   }
 `;

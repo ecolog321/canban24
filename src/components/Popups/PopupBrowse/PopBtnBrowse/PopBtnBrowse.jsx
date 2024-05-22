@@ -32,6 +32,10 @@ export const PopBtnBrowse = ({ cardID, handleEditCard, isEdit, handleSaveCard })
     navigate(-1);
   };
 
+  const handleCancel = () => {
+    navigate(0);
+  };
+
   return (
     <BtnsBrowse>
       {error ? <h2 style={{ color: "red" }}>{error}</h2> : <></>}
@@ -39,7 +43,7 @@ export const PopBtnBrowse = ({ cardID, handleEditCard, isEdit, handleSaveCard })
         {isEdit ? (
           <>
             <ButtonBor onClick={handleSaveCard}>Сохранить</ButtonBor>
-            <ButtonBor onClick={handleEditCard}>Отменить</ButtonBor>
+            <ButtonBor onClick={handleCancel}>Отменить</ButtonBor>
             <ButtonBor onClick={handleDelete}>Удалить</ButtonBor>
             <ButtonClose onClick={closeBrowse}>Закрыть</ButtonClose>
           </>

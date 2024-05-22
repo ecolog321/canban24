@@ -31,7 +31,7 @@ export const FormBrowseArea = styled.textarea`
   line-height: 1;
   letter-spacing: -0.14px;
   margin-top: 14px;
-  height: 200px;
+  height: 300px;
 
   & ::-moz-placeholder {
     font-weight: 400;

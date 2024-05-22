@@ -20,11 +20,17 @@ export const StatusTheme = styled.div`
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
+  cursor: pointer;
 
   & p {
     font-size: 14px;
     line-height: 1;
     letter-spacing: -0.14px;
+    cursor: pointer;
+  }
+
+  & label {
+    cursor: pointer;
   }
 
   & input {

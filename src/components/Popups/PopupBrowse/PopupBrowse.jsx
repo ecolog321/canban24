@@ -32,7 +32,8 @@ export const PopupBrowse = ({ cardID, $display }) => {
   }, [tasks]);
 
   useEffect(() => {
-    setSelected(selected ? selected : currentCard?.date);
+    setSelected(isEdit ?selected : currentCard?.date);
+    console.log(selected)
   }, [<Calendar/>]);
 
   function handleEditCard() {
@@ -40,6 +41,7 @@ export const PopupBrowse = ({ cardID, $display }) => {
   }
 
   async function handleSaveCard() {
+    setError(null);
     if ((currentCard.description === "") & (changedTask.description === "")) {
       setError("Заполните описание");
       return;
