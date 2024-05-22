@@ -6,8 +6,12 @@ import { statusList } from "../../../../lib/status";
 export const Status = ({
   setChangedTask,
   currentCard,
+  setCurrentCard,
   isEdit,
 }) => {
+
+  
+
   return (
     <PopBrowseStatus>
       <Subtitle>Статус</Subtitle>
@@ -23,7 +27,8 @@ export const Status = ({
                   {status}
                   <CommonInput
                     onClick={(e) => {
-                      setChangedTask({status: e.target.value});
+                      setChangedTask({...currentCard,status: e.target.value});
+                      setCurrentCard({...currentCard,status:e.target.value})
                     }}
                     type="radio"
                     name="status"

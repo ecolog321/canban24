@@ -28,13 +28,12 @@ export const PopupBrowse = ({ cardID, $display }) => {
 
   useEffect(() => {
     setCurrentCard(tasks.find((task) => task._id === cardID));
-    setChangedTask({ ...currentCard });
-    console.log(currentCard);
+    setChangedTask({ ...currentCard});
   }, [tasks]);
 
   useEffect(() => {
     setSelected(selected ? selected : currentCard?.date);
-  }, []);
+  }, [<Calendar/>]);
 
   function handleEditCard() {
     setIsEdit(!isEdit);
