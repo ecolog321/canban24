@@ -33,7 +33,6 @@ export const PopupBrowse = ({ cardID, $display }) => {
 
   useEffect(() => {
     setSelected(isEdit ?selected : currentCard?.date);
-    console.log(selected)
   }, [<Calendar/>]);
 
   function handleEditCard() {
