@@ -29,6 +29,13 @@ export const PopNewWrap=styled.div`
 display: block;
 `
 
+export const PopNewWrapBtns=styled.div`
+display: flex;
+gap:15px;
+justify-content:space-between;
+margin-top:20px;
+`
+
 export const PopNewContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -45,7 +52,7 @@ export const PopNewBlock = styled.div`
   display: block;
   margin: 0 auto;
   background-color: #ffffff;
-  max-width: 630px;
+  max-width: 750px;
   width: 100%;
   padding: 40px 30px 38px;
   border-radius: 10px;

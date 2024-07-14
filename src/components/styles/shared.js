@@ -1,4 +1,5 @@
 import { css, styled } from "styled-components";
+import { topicStyles } from "../../lib/topic";
 
 export const Hover01 = css`
   &:hover {
@@ -37,6 +38,10 @@ export const Btn = styled.button`
   ${Hover01}
 `;
 
+export const CommonInput = styled.input`
+  cursor: pointer;
+`;
+
 export const Subtitle = styled.label`
   color: #000;
   font-size: 14px;
@@ -49,6 +54,26 @@ export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 0 30px;
+`;
+
+export const ContainerNotFound = styled.div`
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  gap: 16px;
+`;
+
+export const ContainerCard = styled.div`
+  display: flex;
+  max-width: 1260px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 px;
 `;
 
 export const Wrapper = styled.div`
@@ -82,15 +107,28 @@ export const CategoriesTheme = styled.div`
   display: inline-block;
   width: auto;
   height: 30px;
-  padding: 8px 20px;
+  padding: 5px 20px;
   border-radius: 24px;
   margin-right: 7px;
-  opacity: 0.4;
+  opacity: ${({ $isCheck }) => ($isCheck ? "1" : "0.5")};
+  background: ${({ $color }) =>
+    topicStyles[$color]?.backgroundColor || "e9d4fa"};
+  color: ${({ $color }) => topicStyles[$color]?.color || ""};
+  cursor: pointer;
 
   & p {
     font-size: 14px;
     font-weight: 600;
     line-height: 14px;
     white-space: nowrap;
+    cursor: pointer;
+  }
+
+  & label {
+    cursor: pointer;
+  }
+
+  & input {
+    display: none;
   }
 `;

@@ -8,15 +8,17 @@ import {
   PopNewContainer,
   PopNewContent,
   PopNewWrap,
+  PopNewWrapBtns,
 } from "./PopNewCard.styled";
 import { PopNewCardCategories } from "./PopNewCardCategories/PopNewCardCategories";
 import { PopNewCardForm } from "./PopNewCardForm/PopNewCardForm";
 import { useState } from "react";
 import { useUserContext } from "../../../context/hooks/useUser";
 import { useTasks } from "../../../context/hooks/useTasks";
+import { ContainerCard } from "../../styles/shared";
 
 export function PopNewCard({ $display }) {
-  const { tasks, setTaskList } = useTasks();
+  const { setTaskList } = useTasks();
   const { user } = useUserContext();
   const navigate = useNavigate();
   const [selected, setSelected] = useState();
@@ -72,14 +74,20 @@ export function PopNewCard({ $display }) {
           <PopNewContent>
             <h3>Создание задачи</h3>
             {error ? <h2 style={{ color: "red" }}>{error}</h2> : <></>}
-            <a href=""></a>
             <PopNewWrap>
-              <PopNewCardForm newTask={newTask} setNewTask={setNewTask} />
-              <Calendar selected={selected} setSelected={setSelected} />
+              <ContainerCard><PopNewCardForm newTask={newTask} setNewTask={setNewTask} />
+              <Calendar selected={selected} setSelected={setSelected} /></ContainerCard>
+              
               <PopNewCardCategories newTask={newTask} setNewTask={setNewTask} />
             </PopNewWrap>
-            <PopNewButton onClick={handleSubmit}>Создать задачу</PopNewButton>
-            <PopNewButton onClick={closeWindow}>Закрыть</PopNewButton>
+            <div>
+              <PopNewWrapBtns>
+                <PopNewButton onClick={handleSubmit}>
+                  Создать задачу
+                </PopNewButton>
+                <PopNewButton onClick={closeWindow}>Закрыть</PopNewButton>
+              </PopNewWrapBtns>
+            </div>
           </PopNewContent>
         </PopNewBlock>
       </PopNewContainer>

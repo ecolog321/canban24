@@ -8,7 +8,7 @@ import {
   ModalGroup,
   ModalInput,
   ModalTtl,
-} from "../styles/Login.styled";
+} from "../styles/LoginRegister.styled";
 
 import { Link } from "react-router-dom";
 import { AppRoutes } from "../../lib/routes";
